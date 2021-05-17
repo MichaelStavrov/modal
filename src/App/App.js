@@ -27,7 +27,7 @@ export function App() {
 
   const { itemCost, cost } = currentProduct;
   const subCost = cost + itemCost * slots;
-
+console.log(userBalance);
   return (
     <div className={s.wrapper}>
       <button
@@ -76,6 +76,8 @@ export function App() {
               <StepThree
                 setStep={setStep}
                 steps={steps}
+                dataRequest={dataRequest}
+                userBalance={userBalance}
                 setUserBalance={setUserBalance}
               />
             )}
@@ -159,6 +161,7 @@ export function App() {
                       ? userBalance < dataRequest.total
                       : true) || step === steps.one
                   }
+                  onClick={() => userBalance >= dataRequest.total ? setStep(steps.four) : ''}
                 >
                   Запросить
                 </Button>

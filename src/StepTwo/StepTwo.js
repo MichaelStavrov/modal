@@ -8,6 +8,13 @@ import { ButtonBack } from "../Buttons/ButtonBack/ButtonBack";
 import { ProgressBlock } from "../ProgressBlock/ProgressBlock";
 import { isEmpty } from "../StepOne/utils/isEmpty";
 
+const terms = [
+  { id: 1, month: 1, discount: 0 },
+  { id: 2, month: 2, discount: 10 },
+  { id: 3, month: 3, discount: 20 },
+  { id: 4, month: 4, discount: 30 },
+];
+
 export function StepTwo({
   steps,
   subCost,
@@ -20,13 +27,14 @@ export function StepTwo({
   const [value, setValue] = useState("");
   const [currentDiscount, setCurrentDiscount] = useState(0);
   const [disabled, setDisabled] = useState(true);
+  const [activeTerms, setActiveTerms] = useState([])
 
-  const terms = [
-    { id: 1, month: 1, discount: 0 },
-    { id: 2, month: 2, discount: 10 },
-    { id: 3, month: 3, discount: 20 },
-    { id: 4, month: 4, discount: 30 },
-  ];
+  if (activeTerms.length === 0) {
+    setActiveTerms(terms)
+  }
+
+
+
 
   useEffect(() => {
     if (value.length < 6) {
@@ -39,6 +47,14 @@ export function StepTwo({
       setDisabled(false);
     }
   }, [dataRequest]);
+
+  function handleInputTermChange(e) {
+    const value = e.target.value
+    setValue(value);
+    const activeItem = terms.find(term => term.month !== +value) 
+    setActiveTerms([...activeTerms, activeItem]);
+    setActiveTerms(activeTerms.filter(term => term.month === +value));
+  }
 
   function handleMouseDownClick(month, discount) {
     const total = Math.round(
@@ -76,7 +92,7 @@ export function StepTwo({
               placeholder="1 месяц"
               autoComplete="off"
               value={value}
-              onChange={(e) => setValue(e.target.value)}
+              onChange={handleInputTermChange}
               onFocus={() => setInfocus(true)}
               onBlur={() => setInfocus(false)}
             />
@@ -95,7 +111,7 @@ export function StepTwo({
         </div>
         {inFocus && (
           <ul className={s.listTerms}>
-            {terms.map(({ id, month, discount }) => (
+            {activeTerms.map(({ id, month, discount }) => (
               <li
                 className={s.itemTerms}
                 key={id}

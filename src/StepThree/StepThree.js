@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import cn from "classnames";
 import s from "./StepThree.module.css";
 import iconCard from "../images/card.svg";
@@ -6,7 +6,6 @@ import iconYandex from "../images/yandex.svg";
 import iconQiwi from "../images/qiwi.svg";
 import iconWebmoney from "../images/webmoney.svg";
 import iconBitcoin from "../images/bitcoin.svg";
-// import iconCircle from "../images/circle.svg";
 import { ReactComponent as IconСircle } from "../images/circle.svg";
 import { Button } from "../Buttons/Button/Button";
 import { ButtonBack } from "../Buttons/ButtonBack/ButtonBack";
@@ -45,28 +44,26 @@ const items = [
   },
 ];
 
-export function StepThree({ steps, setStep, setUserBalance }) {
+export function StepThree({ steps, setStep, userBalance, setUserBalance, dataRequest }) {
   const [value, setValue] = useState('');
   const [checked, setChecked] = useState("yandex");
-  const [selectedItem, setSelectedItem] = useState(
-    items.find((item) => item.value === checked)
-  );
 
   function handleInputSumChange(e) {
     const value = +e.target.value;
 
-    if (isNaN(value) || value < 0) {
-      setValue(0);
-    } else if (value > 999999) {
+    if (isNaN(value)) {
+      return;
+    } 
+    setValue(value);
+    if (value > 999999) {
       setValue(999999);
-    } else {
-      setValue(value);
+    }
+    if (value < 0) {
+      setValue(0);
     }
   }
-
   function handleRadioClick(e, id) {
     setChecked(e.target.value);
-    setSelectedItem(items.find((item) => item.id === id));
   }
 
   return (
@@ -82,7 +79,7 @@ export function StepThree({ steps, setStep, setUserBalance }) {
             pattern="[0-9]*"
             value={value}
             onChange={handleInputSumChange}
-            onBlur={() => setUserBalance((prev) => prev + value)}
+            onBlur={() => setUserBalance((prev) => value ? prev + value : prev)}
           />
         </div>
       </label>
@@ -124,6 +121,7 @@ export function StepThree({ steps, setStep, setUserBalance }) {
         <div className={s.btnWrapper}>
           <Button
             style={{ letterSpacing: ".3px" }}
+            disabled={userBalance < dataRequest.total}
             onClick={() => setStep(steps.four)}
           >
             Продолжить

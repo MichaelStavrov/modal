@@ -59,6 +59,7 @@
   font-size: 11px;
   color: #205eff;
   line-height: 1.25;
+  pointer-events: none;
 }
 
 .selectedProduct {

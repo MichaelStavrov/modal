@@ -49,11 +49,21 @@ export function StepOne({ setStep, steps, setCurrentProduct, setSlots }) {
     setSlots(valueInputSlots);
   }, [setSlots, valueInputSlots]);
 
-  if (valueInputSlots < 0) {
-    setValueInputSlots(0);
-  }
-  if (valueInputSlots > 999) {
-    setValueInputSlots(999);
+  function handleInputSlotsChange(e) {
+    const value = +e.target.value;
+
+    if (isNaN(value)) {
+      return;
+    } 
+    setValueInputSlots(value);
+    if (value > 999) {
+      setValueInputSlots(999);
+    }
+    if (value < 0) {
+      setValueInputSlots(0);
+    }
+    
+    
   }
 
   function handleSelectedProductClick({
@@ -132,19 +142,19 @@ export function StepOne({ setStep, steps, setCurrentProduct, setSlots }) {
               name="slots"
               id="slots"
               value={valueInputSlots}
-              onChange={(e) => setValueInputSlots(+e.target.value)}
+              onChange={handleInputSlotsChange}
             />
             <button
               className={s.btnPlus}
               type="button"
-              onClick={() => setValueInputSlots((prev) => prev + 1)}
+              onClick={() => setValueInputSlots((prev) => prev >= 999 ? 999 : prev + 1)}
             >
               <img src={iconPlus} alt="plus" />
             </button>
             <button
               className={s.btnMinus}
               type="button"
-              onClick={() => setValueInputSlots((prev) => prev - 1)}
+              onClick={() => setValueInputSlots((prev) => prev <= 0 ? 0 : prev - 1)}
             >
               <img src={iconMinus} alt="minus" />
             </button>
