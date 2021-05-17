@@ -1,0 +1,52 @@
+.stepFour {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  min-width: 250px;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f3f4f5;
+}
+
+.title {
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #205EFF;
+  text-align: center;
+}
+
+.row {
+  margin-bottom: 25px;
+}
+
+.rowTop {
+  margin-bottom: 2px;
+  font-weight: 600;
+  color: #34324F;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rowTitle {
+  font-size: 12px;
+}
+
+.rowValue {
+  font-size: 14px;
+}
+
+.rowSubtitle {
+  font-weight: 500;
+  font-size: 11px;
+  color: #9B99AE;
+}
+
+.discount {
+  color: #205EFF;
+}

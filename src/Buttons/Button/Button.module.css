@@ -1,0 +1,16 @@
+.btnContinue {
+  width: 139px;
+  height: 42px;
+  background: #205eff;
+  border-radius: 4px;
+  color: #F4F7FF;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnDisabled {
+  background-color: #C0D2FF;
+}

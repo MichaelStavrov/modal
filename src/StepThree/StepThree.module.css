@@ -1,0 +1,139 @@
+.stepThree {
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px 30px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-weight: 800;
+  font-size: 14px;
+  color: #6773a0;
+}
+
+.labelInputSum {
+  margin-bottom: 17px;
+  width: 258px;
+}
+
+.labelInputSumTitle {
+  margin-bottom: 9px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #7b7b83;
+}
+
+.inputSumWrap {
+  position: relative;
+}
+
+.inputSumWrap::after {
+  content: "$";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-weight: 500;
+  font-size: 13px;
+  color: #205eff;
+}
+
+.inputSum {
+  width: 100%;
+  padding: 12px;
+  height: 42px;
+  border: 1px solid #f1f2f5;
+  border-radius: 4px;
+  color: #969bae;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.legend {
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #7b7b83;
+}
+
+.radioGroup {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80px;
+  min-width: 450px;
+}
+
+.inputRadioWrap {
+  position: relative;
+}
+
+.imgCircleWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.imgCircle {
+  width: 14px;
+  height: 14px;
+  stroke: #B8C5F4;
+}
+
+.imgCircleChecked {
+  stroke: #205EFF;
+}
+
+.item {
+  margin-bottom: 17px;  
+  min-width: 220px;
+}
+
+.labelRadio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.inputRadio {
+  margin-right: 12px;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.imageWrap {
+  margin-right: 7px;
+  max-width: 25px;
+  max-height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.labelRadioTitle {
+  font-weight: 600;
+  font-size: 12px;
+  color: #474E69;
+  cursor: pointer;
+}
+
+
+.bottom {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+}
+
+.btnWrapper {
+  margin-right: 14px;
+}
+
+.progressWrapper {
+  margin-left: auto;
+}
+
+
+
+
